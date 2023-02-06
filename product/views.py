@@ -56,3 +56,9 @@ class Review_List(APIView):
         obj = Reviews.objects.all()
         ser = ReviewSerializer(obj,many=True)
         return Response({"data":ser.data} , status=200)
+
+class ProductVariants(APIView):
+    def get(self,request):
+        data  = request.query_params
+        obj = Product.objects.filter(product_type=data["asset_type"]).values("size").distinct()
+        return Response({"data":obj},status=200)

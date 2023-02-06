@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from user.views import Info,Cart_View
-from product.views import ProductList,AuthenticityCheck,AddReview,Review_List
+from product.views import ProductList,AuthenticityCheck,AddReview,Review_List,ProductVariants
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('reviews/add/' , AddReview.as_view()),
     path('user/cart/' , Cart_View.as_view()),
     path('reviews/' , Review_List.as_view()),
+    path('products/variant/',ProductVariants.as_view()),
     
 ]
