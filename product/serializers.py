@@ -12,7 +12,8 @@ class ProductSerializer(serializers.ModelSerializer):
             "flavour",
             "mrp",
             "discount",
-            "price"]
+            "price",
+            "details"]
     def get_price(self,obj):
         return obj.mrp*(1 - obj.discount/100)
 

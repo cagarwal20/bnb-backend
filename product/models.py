@@ -29,6 +29,7 @@ class Product(models.Model):
     flavour = models.CharField(max_length=20,choices=FLAVOUR_CHOICES,default=None)    
     mrp = models.IntegerField(blank=True)
     discount = models.IntegerField(blank=True)
+    details = models.JSONField(blank=True,default=dict())
 
 class Authenticity(models.Model):
     code = models.BigIntegerField(primary_key=True)
