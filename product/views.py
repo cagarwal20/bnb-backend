@@ -53,32 +53,9 @@ class AddReview(APIView):
 
 class Review_List(APIView):
     def get(self,request):
-        return Response({"data":
-    [
-        {
-            "id": 25,
-            "name": "Moti",
-            "email": "123",
-            "phone_number": "123",
-            "feedback": "wow"
-        },
-        {
-            "id": 26,
-            "name": "Lodu",
-            "email": "cagarwal20@gmail.com",
-            "phone_number": "123",
-            "feedback": "wOWWWW"
-        },
-        {
-            "id": 27,
-            "name": "Lodu",
-            "email": "cagarwal20@gmail.com",
-            "phone_number": "123",
-            "feedback": "wOWWWW"
-        }
-    ]
-        }
- , status=200)
+        obj = Reviews.objects.all()
+        ser = ReviewSerializer(obj,many=True)
+        return Response({"data":ser.data} , status=200)
 
 class ProductVariants(APIView):
     def get(self,request):
