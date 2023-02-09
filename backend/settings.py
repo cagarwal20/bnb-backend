@@ -82,8 +82,8 @@ HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-if ON_HEROKU:
-    DATABASES = {
+#if ON_HEROKU:
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': "postgres",    
@@ -93,11 +93,11 @@ if ON_HEROKU:
             "PORT": 5432,
             }
         }
-else:
-    DATABASES={'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')}
-    }
+# else:
+#     DATABASES={'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3')}
+#     }
     
 
 
