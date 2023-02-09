@@ -53,8 +53,6 @@ class AddReview(APIView):
 
 class Review_List(APIView):
     def get(self,request):
-        obj = Reviews.objects.all()
-        ser = ReviewSerializer(obj,many=True)
         return Response({"data":
     [
         {
