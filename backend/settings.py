@@ -85,7 +85,7 @@ HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 #if ON_HEROKU:
 DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': "postgres",    
             "USER": "postgres",
             "PASSWORD": "bnb-database-prod",
