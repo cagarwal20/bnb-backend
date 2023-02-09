@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+print(os.environ)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -28,7 +28,7 @@ DEBUG = True
 # ALLOWED_HOSTS = []
 
 # settings.py
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
 
 # Application definition
 
@@ -77,20 +77,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+ON_HEROKU = os.environ.get('ON_HEROKU')
+HEROKU_SERVER = os.environ.get('HEROKU_SERVER')
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': "postgres",    
-        "USER": "postgres",
-        "PASSWORD": "bnb-database-prod",
-        "HOST": "db.ykphrmxzsvzzubalbocm.supabase.co",
-        "PORT": 5432,
+if ON_HEROKU:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': "postgres",    
+            "USER": "postgres",
+            "PASSWORD": "bnb-database-prod",
+            "HOST": "db.ykphrmxzsvzzubalbocm.supabase.co",
+            "PORT": 5432,
+            }
         }
+else:
+    DATABASES={'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3')}
     }
+    
+
+
 
 # settings.py
 
