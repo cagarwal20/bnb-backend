@@ -20,3 +20,6 @@ class Cart_View(APIView):
 
 
 
+class ping(APIView):
+    def get(self,request):
+        return Response({"response":"i am alive"} , status=400)
